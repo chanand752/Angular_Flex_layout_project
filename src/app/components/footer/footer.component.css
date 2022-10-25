@@ -1,0 +1,12 @@
+/* .example-spacer {
+    flex: 1 1 auto;
+  } */
+
+  .Footer {
+    position: fixed;
+    bottom: 0%;
+    background-color: rgb(182, 183, 185);
+    color: #ffffff;
+    padding: 3px;
+    width: 100%;
+  }

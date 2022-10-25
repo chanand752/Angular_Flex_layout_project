@@ -14,6 +14,8 @@ import { DailogComponent } from './dailog/dailog.component';
 import { MirostatuspageComponent } from './mirostatuspage/mirostatuspage.component';
 import { RequestaccesPageComponent } from './requestacces-page/requestacces-page.component';
 import { FormValadiationComponent } from './components/form-valadiation/form-valadiation.component';
+import { HeaderComponent } from './components/header/header.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
@@ -25,7 +27,9 @@ import { FormValadiationComponent } from './components/form-valadiation/form-val
     DailogComponent,
     MirostatuspageComponent,
     RequestaccesPageComponent,
-    FormValadiationComponent
+    FormValadiationComponent,
+    HeaderComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
