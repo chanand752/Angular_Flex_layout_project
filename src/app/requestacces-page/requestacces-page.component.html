@@ -1,0 +1,238 @@
+<div >
+    <mat-toolbar>
+        <button mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with home icon" fxShow
+            fxHide.gt-xs class="margin-for-home">
+            <i class="material-icons">home</i>
+        </button>
+        <span>The Work Bench</span>
+        <span class="example-spacer"></span>
+        <div fxShow fxHide.lt-md>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon><i class="material-icons">feedback</i></mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon cart" aria-label="Example icon-button with cart icon">
+                <mat-icon> <i class="material-icons">shopping_cart</i></mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon logout-icon" aria-label="Example icon-button with logout icon">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button
+            [matMenuTriggerFor]="menu" fxShow fxHide.gt-xs>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Feed Back</button>
+            <button mat-menu-item>Cart</button>
+            <button mat-menu-item>Log Out</button>
+        </mat-menu>
+    </mat-toolbar>
+</div>
+
+<div style="padding: 15px;">
+    <div fxLayout="row" fxShow fxHide.lt-md style="padding: 5px;">
+        <button mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with home icon"
+            class="margin-for-home">
+            <i class="material-icons">home</i>
+            
+        </button>
+        <h1>Request Access show</h1>
+    </div>
+    <div>
+        <mat-card class="card-access" fxLayout="row" fxFlex="100" fxLayoutAlign="space-between center" fxShow
+            fxHide.lt-md>
+            <h1>
+                Access requests are transitining from ARP and SAFE to myTHDAccess <br>
+                <span>
+                    <h3>
+                        Access requests must now be completed myTHD access unless the request type is listed as an ARP
+                        and
+                        SAFE functionlity.</h3>
+                </span>
+                <h3>
+                    Select the correct access request action by followinf the fuidelines below.
+                </h3>
+            </h1>
+            <p>
+                new icon
+            </p>
+        </mat-card>
+    </div>
+    <div fxLayout="column" fxLayout.xs="column">
+        <h1 class="heading" fxFlex="100">When to use MyTHDAccess</h1>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start" style="padding: 15px;">
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon" >new icon</p>
+                <h1> Requesting New Access
+                    <span>
+                        <h3>
+                            For requesting entitlements or groups (formely ARP groups)
+                            to access Home Depot applications and systems.
+                        </h3>
+                    </span>
+                </h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Group Mangement <span>
+                        <h3>
+                            For group creation. updating a group and change date ownership
+                        </h3>
+                    </span> </h1>
+            </div>
+            <div fxLayout="column" fxFlex="25">
+                <h1> Helpful Resources </h1>
+                <h3 class="sub-heading ">How to Submit an Access Request</h3>
+                <h3 class="sub-heading ">Receving Approval on an Access Request</h3>
+                <h3 class="sub-heading ">How to View the Status of an Acces Request</h3>
+                <h3 class="sub-heading ">How to Approve or Deny an Access Request</h3>
+                <h3 class="sub-heading ">How to Submit a Bulk Access Request</h3>
+                <h3 class="sub-heading ">How to Remove an Access Entitlement from a user</h3>
+                <h3 class="sub-heading ">How to View My Accesst</h3>
+                <h3 class="sub-heading ">How to Setup a Delegate for Out of Office Periods</h3>
+                <h3 class="sub-heading ">Entitlement Group Mangement Support</h3>
+                <div fxLayoutAlign="end end" > 
+                <button class="button"> Go To MyTHDAccess</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="column" fxLayout.xs="column" style="padding: 15px;">
+        <h1 class="heading" fxFlex="100">When to use ARP</h1>
+        <h3 style="padding: 10px;"> These Access request to be hosted in ARP </h3>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start">
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Requesting a Role
+                    <span>
+                        <h3>
+                            Only available for HR, IT, Operations, Legal and Supply Chain rols.
+                        </h3>
+                    </span>
+                </h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Requesting a Service Account <span>
+                        <h3>
+                            An account used by an application, system or service for a business function, Examples
+                            inclulde.
+                            acounts used for scheduled tasks or default administrative accounts on an applicatton.
+                        </h3>
+                    </span> </h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Requesting a Secondary Accountant <span>
+                        <h3>
+                            T1, T1R, T2, L1 and L2 Accounts
+                        </h3>
+                    </span>
+                </h1>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start">
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Creation of a Shared Mailbox or Distribution List
+                    <!-- <span>
+                        <h3>
+                            For requesting entitlements or groups (formely ARP groups)
+                            to access Home Depot applications and systems.
+                        </h3>
+                    </span> -->
+                </h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Requesting Access to Catalyst or Salesforce
+                    <!-- <span>
+                        <h3>
+                            For group creation. updating a group and change date ownership
+                        </h3>
+                    </span>  -->
+                </h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Requesting Access to Workday.
+                    <!-- <span>
+                        <h3>
+                            For group creation. updating a group and change date ownership
+                        </h3>
+                    </span> -->
+                </h1>
+            </div>
+        </div>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start">
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Requesting Workstation Local Admin Acces(WLAA)
+                    <!-- <span>
+                        <h3>
+                            For requesting entitlements or groups (formely ARP groups)
+                            to access Home Depot applications and systems.
+                        </h3>
+                    </span> -->
+                </h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Requesting on Azure AZ Account
+                    <!-- <span>
+                        <h3>
+                            For group creation. updating a group and change date ownership
+                        </h3>
+                    </span>  -->
+                </h1>
+            </div>
+            <div fxLayout="column" fxFlex="25">
+                <h1> Helpful Resources </h1>
+                <h3 class="sub-heading ">How to Request a Service Account</h3>
+                <h3 class="sub-heading ">How to Request a Secondary Account</h3>
+                <h3 class="sub-heading ">Submitting Request to Create Shared Mailbox</h3>
+                <h3 class="sub-heading ">Create a New Distribution List</h3>
+                <div fxLayoutAlign="end end" >
+                <button class="button" > Go To ARP</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    <div fxLayout="column" fxLayout.xs="column">
+        <h1 class="heading" fxFlex="100">When to use SAFE</h1>
+        <h3 style="padding: 10px;"> These Access request to be hosted in SAFE </h3>
+        <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between start">
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Requesting Access to SAP or Unix
+                    <!-- <span>
+                        <h3>
+                            For requesting entitlements or groups (formely ARP groups)
+                            to access Home Depot applications and systems.
+                        </h3>
+                    </span> -->
+                </h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Delete a Shared Mailbox or Distribution List
+                    <!-- <span>
+                        <h3>
+                            For group creation. updating a group and change date ownership
+                        </h3>
+                    </span>  -->
+                </h1>
+            </div>
+            <div fxLayout="row" fxLayoutAlign="space-between start" fxFlex="25">
+                <p class="icon">new icon</p>
+                <h1> Create Store Email
+                    <!-- <span>
+                        <h3>
+                            For group creation. updating a group and change date ownership
+                        </h3>
+                    </span> -->
+                </h1>
+            </div>
+        </div>
+    </div>
+</div>

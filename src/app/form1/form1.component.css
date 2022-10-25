@@ -1,0 +1,30 @@
+mat-card{ 
+    background-image: url("http://www.freeppt.net/template/blur-color-lights-templates-for-powerpoint.jpg");
+   /* background-size: cover; */
+   text-align: center;
+   height: 800px;
+   background-color: transparent;
+  background-size: cover;
+}
+
+
+.width{
+    width: 15%;
+    color: white;
+   
+
+}
+mat-option {
+    color: rgb(197, 230, 14);
+}
+.mat-radio-group~.mat-radio-group {
+    width: 16px;
+}
+
+mat-radio-button{
+    margin: 2px;
+}
+
+input{
+    color: white;
+}

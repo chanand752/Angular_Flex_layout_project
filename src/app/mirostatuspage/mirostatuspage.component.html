@@ -1,0 +1,197 @@
+<div>
+    <mat-toolbar>
+        <button mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with home icon" fxShow
+            fxHide.gt-xs class="margin-for-home">
+            <i class="material-icons">home</i>
+        </button>
+        <span>The Work Bench</span>
+        <span class="example-spacer"></span>
+        <div fxShow fxHide.lt-md>
+            <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+                <mat-icon><i class="material-icons">feedback</i></mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon cart" aria-label="Example icon-button with cart icon">
+                <mat-icon> <i class="material-icons">shopping_cart</i></mat-icon>
+            </button>
+            <button mat-icon-button class="example-icon logout-icon" aria-label="Example icon-button with logout icon">
+                <mat-icon>logout</mat-icon>
+            </button>
+        </div>
+        <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button
+            [matMenuTriggerFor]="menu" fxShow fxHide.gt-xs>
+            <mat-icon>menu</mat-icon>
+        </button>
+        <mat-menu #menu="matMenu">
+            <button mat-menu-item>Feed Back</button>
+            <button mat-menu-item>Cart</button>
+            <button mat-menu-item>Log Out</button>
+        </mat-menu>
+    </mat-toolbar>
+
+</div>
+<div fxLayout="row" fxLayout.xs="column" flex="1 1" style="padding: 10px;">
+    <mat-card fxLayout="column" fxFlex="30" fxFlexOffset="0.5">
+        <div fxLayoutAlign="space-between"><img src="" alt="profile" />
+            <div> <span> Anand Babu Chavali</span><br>
+                <span>CONTRACTOR</span><br>
+                <span>SITE 9090</span>
+            </div>
+        </div>
+        <div fxLayout="column " fxFlex fxLayoutGap="1%" fxFlex="30">
+            <mat-card class="header">My Area Devices</mat-card>
+            <mat-card class="header">My Orders</mat-card>
+            <mat-card class="header">My Tickets</mat-card>
+            <mat-card class="header">Support Desk</mat-card>
+            <mat-card class="header">Catlog Manager</mat-card>
+            <mat-card class="header">Chat Manager</mat-card>
+        </div>
+    </mat-card>
+    <div fxLayout="column" fxFlexOffset="1">
+        <h1 class="heading" fxFlex="10">Be Productive</h1>
+        <div fxLayout="row wrap" fxFlex="100" fxLayout.xs="column" fxLayoutGap="2%">
+
+            <div class="item item-1" fxFlex="30" fxFlex.xs="100%">
+                Item 1
+            </div>
+            <div class="item item-2" fxFlex="30" fxFlex.xs="100%">
+                Item 2
+            </div>
+            <div class="item item-3" fxFlex="30" fxFlex.xs="100%">
+                Item 3
+            </div>
+            <div fxLayout="row" fxFlex="100" fxLayout.xs="column" fxLayoutGap="2%">
+                <div class="item item-1" fxFlex="30" fxFlex.xs="100%">
+                    Item 1
+                </div>
+                <div class="item item-2" fxFlex="30" fxFlex.xs="100%">
+                    Item 2
+                </div>
+                <div class="item item-3" fxFlex="30" fxFlex.xs="100%">
+                    Item 3
+                </div>
+            </div>
+            <h1 class="heading" fxFlex="50">Get Answers</h1>
+            <div class="item item-1" fxFlex="80" fxFlex.xs="100%">
+                Serch My Soultions
+            </div>
+            <h1 class="heading" fxFlex="50">Get HardWare</h1>
+            <div class="item item-1" fxFlex="80" fxFlex.xs="100%">
+                HardWare Shopping
+            </div>
+        </div>
+        <!-- <h1 class="heading" fxFlex="100">Get Answers</h1> -->
+    </div>
+    <!-- <div class="container-1" fxLayout="row" fxLayout.sm="column" fxLayoutGap="20px" fxFlex="100">
+        <div class="cardWrap" fxLayout.lt-lg="row" fxLayout.xs="column" fxLayout="column" 
+            fxLayoutAligmnet="space-between center" fxLayoutGap="20px">
+            <div fxFlex.lt-md="100" fxFlex="100">Card</div>
+            <div fxFlex.lt-md="100" fxFlex="100">Card</div>
+            <div fxFlex.lt-md="100" fxFlex="100">Card</div>
+        </div>
+        <div class="cardWrap" fxLayout.lt-lg="row" fxLayout.xs="column" fxLayout="column" 
+            fxLayoutAligmnet="space-between center" fxLayoutGap="20px">
+            <div fxFlex.lt-md="100" fxFlex="100">Card</div>
+            <div fxFlex.lt-md="100" fxFlex="100">Card</div>
+            <div fxFlex.lt-md="100" fxFlex>Card</div>
+        </div>
+    </div> -->
+</div >
+<div style="padding: 10px;">
+<div class="container" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div class="item item-1" fxFlex="30%" fxFlex.xs="100%">
+        Item 1
+    </div>
+</div>
+<div class="container" fxLayoutAlign="start" fxLayoutGap="10px" fxLayoutGap.xs="0">
+    <div class="item item-1" fxFlex="30%" fxFlex.xs="100%">
+        Item 2
+    </div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- <p>mirostatuspage works!</p>
+
+<div class="container" fxLayout="column" fxLayout.md="row" fxLayoutGap="20px">
+    <div class="cardWrap" fxLayout.lt-md="column" fxLayout.md="column" fxLayout="row" fxFlex.md="50"
+        fxLayoutAligmnet="space-between center" fxLayoutGap="20px">
+        <div fxFlex.lt-md="100" fxFlex="35">Card</div>
+        <div fxFlex.lt-md="100" fxFlex="35">Card</div>
+        <div fxFlex.lt-md="100" fxFlex="35">Card</div>
+    </div>
+    <div class="cardWrap" fxLayout.lt-md="column" fxLayout.md="column" fxLayout="row" fxFlex.md="50"
+        fxLayoutAligmnet="space-between center" fxLayoutGap="20px">
+        <div fxFlex.lt-md="100" fxFlex="35">Card</div>
+        <div fxFlex.lt-md="100" fxFlex="35">Card</div>
+        <div fxFlex.lt-md="100" fxFlex="35">Card</div>
+    </div>
+</div> -->

@@ -1,0 +1,143 @@
+<!-- <h1 class="para">User Registration Form</h1>
+<div  fxLayout="row" fxLayoutAlign="center"  > 
+ <form>
+     <div  fxLayout="row" fxLayoutGap="60" > 
+
+    <mat-form-field appearance="outline">
+      <mat-label>First Name</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Enter Your First Name</mat-hint>
+    </mat-form-field>
+
+</div>
+
+  <div fxLayout="row"  fxLayoutGap="30px"> 
+
+    <mat-form-field appearance="outline">
+      <mat-label>Last Name</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>sentiment_very_satisfied</mat-icon>
+      <mat-hint>Enter Your Last Name</mat-hint>
+    </mat-form-field>
+
+</div>
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>email</mat-icon>
+      <mat-hint>Enter Your Email</mat-hint>
+    </mat-form-field>
+  </p>
+
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Age</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix>calendar_today</mat-icon>
+      <mat-hint>Enter Your Age</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Pasword</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix (click)="hide = !hide">{{hide ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-hint>Enter Your Password</mat-hint>
+    </mat-form-field>
+  </p>
+  <p>
+    <mat-form-field appearance="outline">
+      <mat-label>Conform Password</mat-label>
+      <input matInput placeholder="Placeholder">
+      <mat-icon matSuffix (click)="hide1 = !hide1">{{hide1 ? 'visibility_off' : 'visibility'}}</mat-icon>
+      <mat-hint>Password Must Be Same</mat-hint>
+    </mat-form-field>
+  </p>
+  <mat-checkbox  fxLayout="row" fxLayoutAlign="space-around centr" >Hide</mat-checkbox>
+    <div>
+      <label>Select Gender: </label>
+      <mat-radio-group fxLayout="row" fxLayoutAlign="space-around centr">
+        <mat-radio-button value="auto">Male</mat-radio-button>
+        <mat-radio-button value="always">Female</mat-radio-button>
+        <mat-radio-button value="always">Others</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div class="example-button-row">
+        <button mat-raised-button color="primary">Submit</button>
+        <button mat-raised-button color="warn">Reset</button>
+        <button mat-raised-button color="basic">Edit</button>
+      </div>
+    </form>
+</div> -->
+
+
+<div>
+  <mat-toolbar>
+    <button mat-icon-button class="example-icon home-icon" aria-label="Example icon-button with home icon" fxShow
+      fxHide.gt-xs class="margin-for-home">
+      <i class="material-icons">home</i>
+    </button>
+    <span>The Work Bench</span>
+    <span class="example-spacer"></span>
+    <div fxShow fxHide.lt-md>
+      <button mat-icon-button class="example-icon favorite-icon" aria-label="Example icon-button with heart icon">
+        <mat-icon><i class="material-icons">feedback</i></mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon cart" aria-label="Example icon-button with cart icon">
+        <mat-icon> <i class="material-icons">shopping_cart</i></mat-icon>
+      </button>
+      <button mat-icon-button class="example-icon logout-icon" aria-label="Example icon-button with logout icon">
+        <mat-icon>logout</mat-icon>
+      </button>
+    </div>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon" mat-button
+      [matMenuTriggerFor]="menu" fxShow fxHide.gt-xs>
+      <mat-icon>menu</mat-icon>
+    </button>
+    <mat-menu #menu="matMenu">
+      <button mat-menu-item>Feed Back</button>
+      <button mat-menu-item>Cart</button>
+      <button mat-menu-item>Log Out</button>
+    </mat-menu>
+  </mat-toolbar>
+</div>
+
+<div fxLayout="column" fxLayout.xs="column" fxLayoutAlign="center" style="padding: 15px;">
+  <h1 class="heading" fxFlex="100" style="padding: 5px;">MIRO STATUS PAGE</h1>
+  <div class="container" fxLayoutGap.xs="0" fxLayout="row" fxLayout.xs="column" fxLayoutGap="1%" fxLayoutGap.xs="1%">
+    <div fxFlex="50%" fxFlex.xs="50%">
+      <mat-card fxLayout="column" class="card">
+        Current Status
+        <button>Premimum activation Pending</button>
+        <h2>
+          A notification has been sent to re-active Premimum access
+        </h2>
+        <h5>
+          It may Take up to 2 hours to be activatied. You will recivie an email letting you
+          know your status is active again
+        </h5>
+      </mat-card>
+    </div>
+    <div fxFlex="50%" fxFlex.xs="50%" fxLayoutGap="1%">
+      <mat-card class="card-2" fxLayout="column" fxLayoutGap="1%">
+        Micro access Levels
+        <mat-card fxLayout="row" fxFlex="10" fxLayoutGap="1%">
+          <h5>Limited Fre</h5>
+          <h5>Premimum $70 quarterly</h5>
+
+        </mat-card>
+        <mat-card></mat-card>
+        <mat-card></mat-card>
+        <mat-card></mat-card>
+      </mat-card>
+    </div>
+  </div>
+  <div class="container" fxLayoutGap.xs="0">
+    <h1>Need a refresher how to start a Miro?</h1>
+    <h3>vist the Miro acemdey for free training resources on how to use Miro</h3>
+    <h3>For instructions on how to manage boards and teams within the Home Depot, vist the Miro workbench</h3>
+  </div>
+</div>

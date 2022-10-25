@@ -1,0 +1,29 @@
+<p>form2 works!</p>
+<div id=p1>
+    <form [formGroup]='details1'>
+        <mat-form-field>
+            <input formControlName="firstname" matInput placeholder="firstname" maxlength="10">
+        </mat-form-field>
+        <br><br>
+        <mat-form-field>
+            <input formControlName="lastname" matInput placeholder="lastname">
+        </mat-form-field><br><br>
+        <mat-radio-group formControlName="gender">gender</mat-radio-group>
+        <mat-radio-button value="male">male</mat-radio-button>
+        <mat-radio-button value="female">female</mat-radio-button>
+        <br><br>
+        <mat-select formControlName="departments" matSelect placeholder="departments">
+            <mat-option> </mat-option>
+            <mat-option value="database">database</mat-option>
+            <mat-option value="javascript">javascript</mat-option>
+            <mat-option value="integration">integration</mat-option>
+        </mat-select><br><br>
+        <mat-form-field>
+            <input formControlName="email" matInput placeholder="email">
+        </mat-form-field>
+        <br><br>
+        <button (click)="update()" mat-raised-button>update</button>
+        <button type="reset" mat-raised-button>reset</button>
+        <button (click)="back()" mat-raised-button>Back</button>
+    </form>
+</div>

@@ -1,0 +1,41 @@
+.example-spacer {
+    flex: 1 1 auto;
+  }
+
+  .card-access{
+    padding: 10px;
+    background-color: antiquewhite;
+  }
+
+  .heading {
+    box-shadow: 0 3px 0 0 #f97606fa;
+    font-family: "Roboto";
+    padding: 5px;
+    margin: 0px;
+  }
+
+  .sub-heading {
+    color: #f97606fa;
+    margin: 0px;
+  }
+  h1 h3 {
+    margin: 0px;
+    padding: 3px;
+  }
+
+  .icon {
+    padding-right: 25px;
+  }
+
+  .button{
+    padding: 10px 0px 10px 0px;
+    width: 10rem;
+    height: 2rem;
+    color: #ffffff;
+    background-color: #f97606fa;
+    text-align: center;
+    border: none;
+  }
+
+
+

@@ -1,0 +1,77 @@
+<mat-card>
+    <div class="bg-color">
+
+        <div>
+            <form [formGroup]='details'>
+                <div>
+                    <mat-form-field>
+                        <input formControlName="firstname" matInput placeholder="* Firstname">
+                    </mat-form-field>
+                </div>
+                <br>
+                <div>
+                    <mat-form-field>
+                        <input formControlName="lastname" matInput placeholder="* Lastname">
+                    </mat-form-field>
+                </div>
+                <br>
+                <div>
+
+                    <mat-form-field>
+                        <input formControlName="email" matInput placeholder="* Email">
+                    </mat-form-field>
+                </div>
+                <br>
+                <div>
+                    <mat-form-field>
+                        <input formControlName="password" matInput placeholder="* Password">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-form-field>
+                        <input formControlName="conformpassword" matInput placeholder="* Conformpassword">
+                    </mat-form-field>
+                </div>
+                <div>
+                    <mat-radio-group formControlName="gender"> Select Gender:
+                        <mat-radio-button value="male">Male</mat-radio-button>
+                        <mat-radio-button value="female">Female</mat-radio-button>
+                        <mat-radio-button value="female">OOthers</mat-radio-button>
+                    </mat-radio-group><br><br>
+
+                </div>
+                
+                <div>
+                    <mat-form-field class="width" >
+
+                    <mat-select  formControlName="departments" matSelect placeholder="Departments">
+                        <mat-option>-- None --</mat-option>
+                        <mat-option value="database">Database</mat-option>
+                        <mat-option value="javascript">Javascript</mat-option>
+                        <mat-option value="integration">Integration</mat-option>
+                    </mat-select>
+                 </mat-form-field><br>
+                </div>
+                <div fxLayout="row" fxLayoutGap="30px" fxLayoutAlign="center none">
+                    <button (click)="save()" mat-raised-button color="accent">Submit</button>
+                    <button type="reset" mat-raised-button color="warn">Reset</button>
+                    <button (click)="edit()" mat-raised-button color="primary">Edit</button>
+                </div>
+            </form>
+
+        </div>
+    </div>
+</mat-card>
+
+    <!-- 
+<div fxLayout="column" >
+  <div fxLayout="row" >
+    <div fxFlex="30"></div>
+    <div fxFlex="20">Hi</div>
+    <div fxFlex="20">Hi</div>
+    <div fxFlex="30"></div>
+  </div>
+  <div>Hii</div>
+  <div>Hii</div>
+
+</div> -->
