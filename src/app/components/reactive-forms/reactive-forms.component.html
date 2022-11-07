@@ -1,0 +1,47 @@
+<p>reactive-forms works!</p>
+
+<label for="name">Name: </label>
+<input id="name" type="text" [formControl]="name">
+
+<p>Value: {{ name.value }}</p>
+
+<button type="button" (click)="updateName()">Update Name</button>
+
+
+<form [formGroup]="profileForm" (ngSubmit)="onSubmit()">
+
+    <label for="first-name">First Name: </label> <br>
+    <input id="first-name" type="text" formControlName="firstName"><br>
+
+    <label for="last-name">Last Name: </label><br>
+    <input id="last-name" type="text" formControlName="lastName"><br>
+    <div formGroupName="address">
+        <h2>Address</h2>
+
+        <label for="street">Street: </label><br>
+        <input id="street" type="text" formControlName="street"><br>
+
+        <label for="city">City: </label><br>
+        <input id="city" type="text" formControlName="city"><br>
+
+        <label for="state">State: </label><br>
+        <input id="state" type="text" formControlName="state"><br>
+
+        <label for="zip">Zip Code: </label><br>
+        <input id="zip" type="text" formControlName="zip"><br>
+    </div>
+    <p>Complete the form to enable button.</p><br>
+    <button type="submit" [disabled]="!profileForm.valid">Submit</button><br>
+    <p>Form Status: {{ profileForm.status }}</p>
+    <button type="button" (click)="updateProfile()">Update Profile</button>
+</form>
+
+
+<div>
+    <mat-form-field>
+        <mat-label>Outline form field</mat-label>
+        <input placeholder="Just a placeholder">
+    </mat-form-field>
+</div>
+
+

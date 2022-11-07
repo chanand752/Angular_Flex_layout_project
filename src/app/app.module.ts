@@ -16,6 +16,9 @@ import { RequestaccesPageComponent } from './requestacces-page/requestacces-page
 import { FormValadiationComponent } from './components/form-valadiation/form-valadiation.component';
 import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { ReactiveFormsComponent } from './components/reactive-forms/reactive-forms.component';
+import { FormValadiationFormGroupComponent } from './components/form-valadiation-form-group/form-valadiation-form-group.component';
+import { FormValadiationFormBuliderComponent } from './components/form-valadiation-form-bulider/form-valadiation-form-bulider.component';
 
 
 @NgModule({
@@ -29,7 +32,10 @@ import { FooterComponent } from './components/footer/footer.component';
     RequestaccesPageComponent,
     FormValadiationComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    ReactiveFormsComponent,
+    FormValadiationFormGroupComponent,
+    FormValadiationFormBuliderComponent
   ],
   imports: [
     BrowserModule,
