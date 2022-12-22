@@ -1,7 +1,8 @@
+
 <div fxLayout="column">
     <mat-form class="formCard" fxLayout="column" style="padding: 2rem;">
         <div fxLayout="column">
-            <select placeholder="Select your component" [formControl]="campagain">
+            <select placeholder="Select your component" [(ngModel)]="campagain">
                 <option value="" disabled selected hidden>Select Campagain</option>
                 <option value="coffee">Coffee</option>
                 <option value="tea">Tea</option>
@@ -15,29 +16,29 @@
             </section>
         </div>
         <label>Full Name</label>
-        <input type="text" placeholder="Full Name" [formControl]="name" />
+        <input type="text" placeholder="Full Name" [(ngModel)]="name" />
         <label>Address (Cannot delevier to PO box Address) </label>
-        <input type="text" placeholder="Street Address" [formControl]="Address" />
+        <input type="text" placeholder="Street Address" [(ngModel)]="Address" />
         <label>Apt/Suite# </label>
-        <input type="text" placeholder="Apt/Suite" [formControl]="Apt_Suite" />
+        <input type="text" placeholder="Apt/Suite" [(ngModel)]="Apt_Suite" />
         <div fxLayoutAlign="space-between" fxLayout="row" fxLayout.xs="column">
             <div fxLayout="column" fxFlex="30">
                 <label>Street</label>
-                <input type="text" placeholder="City" [formControl]="city" />
+                <input type="text" placeholder="City"  [(ngModel)]="city"/>
             </div>
             <div fxLayout="column" fxFlex="30">
                 <label>State/Province</label>
-                <input type="text" placeholder="State" [formControl]="state" />
+                <input type="text" placeholder="State" [(ngModel)]="state" />
             </div>
             <div fxLayout="column" fxFlex="30">
                 <label>Zip/Postal Code</label>
-                <input type="text" placeholder="Zip Code" [formControl]="zipcode" />
+                <input type="text" placeholder="Zip Code" [(ngModel)]="zipcode" />
             </div>
         </div>
         <div fxLayout="row">
             <div fxLayout="column" fxFlex="100">
                 <label>Country</label>
-                <select placeholder="Select your component" [formControl]="country">
+                <select placeholder="Select your component" [(ngModel)]="country">
                     <option value="" disabled selected hidden>Select Country</option>
                     <option value="India">India</option>
                     <option value="U.S.A">USA</option>
@@ -46,16 +47,11 @@
             </div>
             <div fxLayout="column" fxFlex="35">
                 <label>Phone Number</label>
-                <input type="text" placeholder="Phone Number" [formControl]="phoneNumber" />
+                <input type="text" placeholder="Phone Number" [(ngModel)]="phoneNumber" />
             </div>
         </div>
         <div style="padding: 1.5rem;" fxLayoutAlign="center center">
-            <button type="submit" class="button" fxLayoutAlign="center center"
-                (click)="submitForm()">Submit</button><br>
+            <button type="submit" class="button" fxLayoutAlign="center center" (click)="submitForm()">Submit</button><br>
         </div>
     </mat-form>
-
 </div>
-
-
-<!-- <button mat-button (click)="openDialog()">Launch dialoeeeeeg</button> -->

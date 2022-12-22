@@ -1,0 +1,130 @@
+.example-card {
+    /* max-width: 400px; */
+    margin-right: 5rem;
+  }
+  
+  .example-header-image {
+    /* background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg'); */
+    background-size: cover;
+  }
+
+/* shipped order full  */
+
+
+  .wrapper {
+    font-family: 'Helvetica';
+    font-size: 14px;
+  }
+  .StepProgress {
+    position: relative;
+    padding-left: 45px;
+    list-style: none;
+  }
+  .StepProgress::before {
+    display: inline-block;
+    content: '0';
+  
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 10px;
+    height: 100%;
+  }
+  .StepProgress-item {
+    position: relative;
+  }
+  .StepProgress-item:not(:last-child) {
+    padding-bottom: 20px;
+  }
+  .StepProgress-item::before {
+    display: inline-block;
+  
+    content: '';
+    position: absolute;
+    left: -30px;
+    height: 100%;
+    width: 10px;
+    border-left: 2px solid rgb(7, 196, 54);
+  }
+  .StepProgress-item:last-child::before {
+    border-left: 0px solid rgb(7, 196, 54);
+  }
+  .StepProgress-item::after {
+    content: "✔";
+    display: inline-block;
+    position: absolute;
+    font-weight: bold;
+    align-self: center;
+    top: 0;
+    left: -45px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid rgb(62, 239, 13);
+    border-radius: 50%;
+    background-color: rgb(7, 196, 54);
+    color: #ffffff;
+  }
+  
+  .StepProgress strong {
+    display: block;
+  }
+
+
+/* intial order process css */
+
+  .wrapper-1 {
+    font-family: 'Helvetica';
+    font-size: 14px;
+  }
+  .StepProgress-1 {
+    position: relative;
+    padding-left: 45px;
+    list-style: none;
+  }
+  .StepProgress-1::before {
+    display: inline-block;
+    content: '0';
+  
+    position: absolute;
+    top: 0;
+    left: 15px;
+    width: 10px;
+    height: 100%;
+  }
+  .StepProgress-item-1 {
+    position: relative;
+  }
+  .StepProgress-item:not(:last-child) {
+    padding-bottom: 20px;
+  }
+  .StepProgress-item-1::before {
+    display: inline-block;
+  
+    content: '';
+    position: absolute;
+    left: -30px;
+    height: 100%;
+    width: 10px;
+    border-left: 2px solid grey;
+  }
+  .StepProgress-item-1:last-child::before {
+    border-left: 0px solid grey;
+  }
+  .StepProgress-item-1::after {
+    content: "";
+    display: inline-block;
+    position: absolute;
+    font-weight: bold;
+    align-self: center;
+    top: 0;
+    left: -45px;
+    width: 30px;
+    height: 30px;
+    border: 2px solid grey;
+    border-radius: 50%;
+    background-color: grey;
+    color: #ffffff;
+  }
+ 
+  
+  

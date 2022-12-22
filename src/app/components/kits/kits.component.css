@@ -1,0 +1,122 @@
+.button {
+    margin-left: 5rem;
+    color: rgb(255, 166, 0);
+    background-color: #ffffff;
+    border: 1px solid;
+
+}
+
+
+input {
+    width: 25%;
+}
+
+.behalf-input-text {
+    margin-top: 1px !important;
+}
+.white-background {
+    background: #fff;
+    background-color:#fff !important;
+}
+::ng-deep .text-input-container input:not([type]).disabled, .text-input-container input:not([type])[disabled], .text-input-container input[type=date].disabled, .text-input-container input[type=date][disabled], .text-input-container input[type=datetime].disabled, .text-input-container input[type=datetime][disabled], .text-input-container input[type=email].disabled, .text-input-container input[type=email][disabled], .text-input-container input[type=number].disabled, .text-input-container input[type=number][disabled], .text-input-container input[type=password].disabled, .text-input-container input[type=password][disabled], .text-input-container input[type=search].disabled, .text-input-container input[type=search][disabled], .text-input-container input[type=tel].disabled, .text-input-container input[type=tel][disabled], .text-input-container input[type=text].disabled, .text-input-container input[type=text][disabled], .text-input-container input[type=time].disabled, .text-input-container input[type=time][disabled], .text-input-container input[type=url].disabled, .text-input-container input[type=url][disabled] {
+    border: 1px solid #ccc;
+    margin-top:0px ;
+}
+.behalf-box {
+    width: 50%;
+    margin-top: 0px !important;
+
+}
+
+.no-margin {
+    margin-bottom: 0px
+}
+
+.relative-position {
+    position: relative;
+}
+
+.second-row-filter {
+    background: #f5f5f5;
+    padding-bottom: 0px !important;
+}
+.content-ellipse{
+    word-wrap: break-word;
+    display: inline-block;
+}
+.row-filter {
+    background: #f5f5f5;
+    padding: 15px;
+    padding-bottom: 0px !important;
+    border-top: 2px solid #666;
+}
+.align-cell-center{
+    display: flex;
+    justify-content: center;
+}
+.filter-input {
+    margin: 0;
+    min-height: 40px;
+    height: 40px;
+    outline: 0;
+    background-color: #fff;
+    border: 1px solid #ccc;
+    border-radius: 1px;
+    font-size: 18px;
+    color: #444;
+    width: 100%;
+    box-sizing: border-box;
+    padding: 10px;
+    transition: all .3s ease-in-out;
+}
+
+.upload-photo{
+    background: #fff;
+    overflow: hidden;
+    width: 230px;
+    height: 200px;
+}
+.upload-photo img{
+    width:100%;
+}
+.icon-colors {
+    font-size: 30px;
+    color: #2b3134;
+    /*margin-bottom: 25px;*/
+}
+.arrow-action-area{
+    padding:16px 18px;align-items: center;
+}
+.secondary-outline-button {
+    border: 1px solid #f96302;
+    background: #fff;
+    color: #f96302
+}
+
+.action-menu {
+    cursor: pointer;
+    margin-left:auto;
+}
+
+.error-text {
+    border: 1px solid #ED1C24 !important;
+    background: #fef2f2 !important;
+    box-shadow: 0px 0px 5px #ED1C24 !important;
+}
+
+.error-msg {
+    color: #ED1C24 !important;
+    /*margin-top:-16px;*/
+    position:absolute;
+    z-index:9999;
+}
+textarea{
+    font-family: "Open Sans"!important;
+    font-size: 18px !important;
+    color: #444444 !important;
+}
+textarea::placeholder {
+    font-family: "Open Sans"!important;
+}
+
+

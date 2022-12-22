@@ -19,7 +19,18 @@ import { FooterComponent } from './components/footer/footer.component';
 import { ReactiveFormsComponent } from './components/reactive-forms/reactive-forms.component';
 import { FormValadiationFormGroupComponent } from './components/form-valadiation-form-group/form-valadiation-form-group.component';
 import { FormValadiationFormBuliderComponent } from './components/form-valadiation-form-bulider/form-valadiation-form-bulider.component';
-
+import { NgModelFormComponent } from './components/ng-model-form/ng-model-form.component';
+import { MatDailogboxComponent } from './components/mat-dailogbox/mat-dailogbox.component';
+import { KitsComponent } from './components/kits/kits.component';
+import { NgxDatatableModule } from '@swimlane/ngx-datatable';
+import { AddproductComponent } from './components/addproduct/addproduct.component';
+import { ProductStatusComponent } from './components/product-status/product-status.component';
+import { ProgressLabelComponent } from './components/progress-label/progress-label.component';
+import { ProgressStepComponent } from './components/progress-step/progress-step.component';
+import { ProgressStepperComponent } from './components/progress-stepper/progress-stepper.component';
+import { CampgianComponent } from './components/campgian/campgian.component';
+import { CampgianDialogComponent } from './components/campgian-dialog/campgian-dialog.component';
+import { ForbiddenNameDirective } from './shared/forbidden-name.directive';
 
 @NgModule({
   declarations: [
@@ -35,8 +46,21 @@ import { FormValadiationFormBuliderComponent } from './components/form-valadiati
     FooterComponent,
     ReactiveFormsComponent,
     FormValadiationFormGroupComponent,
-    FormValadiationFormBuliderComponent
+    FormValadiationFormBuliderComponent,
+    NgModelFormComponent,
+    MatDailogboxComponent,
+    KitsComponent,
+    AddproductComponent,
+    ProductStatusComponent,
+    ProgressLabelComponent,
+    ProgressStepComponent,
+    ProgressStepperComponent,
+    CampgianComponent,
+    CampgianDialogComponent,
+    ForbiddenNameDirective,
+
   ],
+  entryComponents:[ MatDailogboxComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -44,7 +68,8 @@ import { FormValadiationFormBuliderComponent } from './components/form-valadiati
     BrowserAnimationsModule,
     FlexLayoutModule,
     FormsModule ,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    NgxDatatableModule
    
   ],
   providers: [],

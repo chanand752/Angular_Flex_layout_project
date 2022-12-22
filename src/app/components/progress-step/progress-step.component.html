@@ -1,0 +1,14 @@
+<div *ngFor="let item of status;let i=index;">
+    <div>
+    </div>
+    <div>
+      <div class="row multi-steps-wrap">
+        <ul class="list-unstyled multi-steps">
+          <li class="job-status" [ngClass]="item.status === 'processing' ? 'job-created' : ''">processing</li>
+          <li class="job-status is-active negative" [ngClass]="item.status === 'packed' ? 'job-packed' : ''">Packed</li>
+          <li class="job-status" [ngClass]="item.status === 'shipped' ? 'job-completed' : ''">Shipped</li>
+          <li class="job-status" [ngClass]="item.status === 'delivered' ? 'job-closed' : ''">Delivered</li>
+
+        </ul>
+      </div>
+</div>

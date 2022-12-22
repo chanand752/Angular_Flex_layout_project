@@ -1,0 +1,614 @@
+<div fxLayout="column">
+    <mat-card>
+        <div fxLayout="row" fxLayoutAlign="space-between center">
+            <button mat-icon-button color="primary" aria-label="Example icon button with a home icon">
+                <mat-icon>home</mat-icon>
+            </button>
+
+
+            <input type="search" placeholder="Search" [(ngModel)]="searchWord" style="margin-left:28rem;"
+                (input)="searchKit()" />
+            <button mat-stroked-button color="warn" style="margin-left:25rem;" (click)="enableAddKit()">Add New
+                Kit</button>
+        </div>
+        <!--Add new kit block starts here-->
+        <div class="container" *ngIf="addKit">
+            <mat-card fxLayout="column" style="padding: 12px 45px;">
+                <!--</div>-->
+                <div fxLayout="row  " fxLayoutGap="35px">
+                    <div fxFlex="80" fxLayout="column" style="padding-top:20px;padding-bottom:20px">
+                        <p class="text-pt16 bold " style="margin-top:10px">Kit Name</p>
+                        <div fxLayout="row " fxLayoutGap="25px">
+
+                            <div class="text-input-container behalf-box no-margin relative-position">
+                                <input (blur)="validateKitName()" (input)="disablekitNameError()" autocomplete="off"
+                                    placeholder="Kit Name" style="margin-bottom: 20px;margin-top: 0px;"
+                                    class="white-background" [formControl]="kitName"
+                                    [ngClass]="isKitExist ? 'error-text' : ''">
+                                <p *ngIf="isKitExist" class="error-msg text-pt14" style="margin-top:-16px">Already
+                                    Exists</p>
+                            </div>
+                            <div class="toggle-container global-green-toggle" style="padding-top: -8%;">
+
+                                <mat-slide-toggle class="text-pt16 bold " (change)="toggle($event)">{{togglevalue == 'Y'
+                                    ? 'Publish' : 'Draft'}}</mat-slide-toggle>
+                            </div>
+                        </div>
+                        <div fxLayout="column">
+                            <p class="text-pt16 bold " style="margin-top:10px">Kit Description</p>
+                            <div fxLayout="row" class="text-input-container behalf-box no-margin relative-position">
+                                <textarea [formControl]="kitDescription" autocomplete="off"
+                                    placeholder="Kit Description" class="white-background"
+                                    style="margin-bottom: 20px;margin-top: 0px;">
+                                </textarea>
+                            </div>
+
+                        </div>
+                        <div fxLayout="row">
+                            <i class="icon_plus-circle-outlined icon-colors enable-hand" style="color:#f96302">
+                            </i> <span class="toggle-children enable-hand" style="padding: 4px"
+                                (click)="enableAddItem()">Add Item</span>
+                        </div>
+                    </div>
+
+                    <div fxFlex="30" fxLayout="column" fxLayoutGap="5px"
+                        style="align-items: center;padding-left: 20px;padding-top:20px;padding-bottom:20px">
+                        <div fxLayout="row-reverse" fxLayoutGap="20px" style="padding:0 4%">
+                            <button class="button primary sm " style="width:119px;"
+                                [disabled]="isKitExist || noItem || itemExists">
+                                <span class="text-pt14 ">Save</span>
+                            </button>
+                            <button class=" button secondary sm" style="width:119px;">
+                                <span class="text-pt14 " style="color: #f96302">Cancel</span>
+                            </button>
+                        </div>
+                        <mat-card style="padding:0px; box-shadow: 0 0 0 2px #eee;display:flex;align-items: center"
+                    class="upload-photo">
+            <img [src]="this.imagecontentAdd" *ngIf="this.previewImageAdd=='true'">
+            <img src="assets/no-image-available.jpg" *ngIf="this.previewImageAdd=='false'">
+          </mat-card>
+                        <button class="button md">
+                            <div fxLayout="row" fxLayoutGap="2px" style="align-items: center">
+                                <i class="icon_camera text-pt18" style="color: #f96302"></i>
+                                <span class="text-pt14 " style="color: #f96302">Upload Photo</span>
+                            </div>
+                        </button>
+
+                    </div>
+
+
+                </div>
+                <div *ngIf="addItem" class="card-content ngxScrollRemove"
+                    style="height:calc(100% - 10px);padding:20px 0">
+                    <div class="mat-table-container1" style="height:calc(100% - 10px);width: 80%;">
+                        <ngx-datatable #dataTable class="mat-table" [columnMode]="'force'" [headerHeight]="50"
+                            [rows]="rows" [rowHeight]="'auto'">
+                            <ngx-datatable-column class="mat-table" *ngFor="let column of columns; let i=index"
+                                [draggable]="false" [resizeable]="true" [sortable]="false" prop="{{column.key}}">
+                                <ng-template ngx-datatable-header-template>
+                                    <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                        <span
+                                            class="datatable-header-cell-label dark-text draggable ">{{column.name}}</span>
+                                    </div>
+                                </ng-template>
+                                <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                    <div class="second-row-filter" *ngIf="(!row.supplierPartId || !row.itemQty)">
+                                        <input matInput placeholder="{{column.name}}" class="filter-input"
+                                            oninput="this.value = this.value.toUpperCase()"
+                                            [(ngModel)]="addModel[column.key]" (ngModelChange)="checkFields()"
+                                            (focus)="(column.key != 'supplierPartId') ? getDescription(): ''"
+                                            autocomplete="off"
+                                            [ngClass]="(column.key == 'supplierPartId') && (noItem || itemExists || isItemPublished) ? 'error-text' : ''"
+                                            (input)="noItem || itemExists || isItemPublished ? disableError() : ''">
+                                        <p *ngIf="(column.key == 'supplierPartId') && noItem"
+                                            class="error-msg text-pt14">Item Not Found</p>
+                                        <p *ngIf="(column.key == 'supplierPartId') && itemExists"
+                                            class="error-msg text-pt14">Already Exists</p>
+                                        <p *ngIf="(column.key == 'supplierPartId') && isItemPublished"
+                                            class="error-msg text-pt14">Item Not Published</p>
+                                    </div>
+                                    <div *ngIf="!addItem || (uniqueId !== row.id)">
+                                        <div style="color:#2B3134" class="valuePoint content-ellipse"
+                                            *ngIf=" (row.supplierPartId || row.itemQty)">
+                                            {{value ? value : 'NA'}}
+                                        </div>
+                                    </div>
+                                    <div *ngIf="addItem">
+                                        <div style="color:#2B3134" class="valuePoint content-ellipse" *ngIf=" (row.supplierPartId || row.itemQty) &&
+                                     (uniqueId === row.id) && (column.key != 'itemQty')">
+                                            {{value ? value : 'NA'}}
+                                        </div>
+                                        <div class="second-row-filter"
+                                            *ngIf="(uniqueId === row.id) && (column.key == 'itemQty')">
+                                            <input matInput placeholder="Filter " [(ngModel)]="editModel[column.key]"
+                                                class="filter-input" autocomplete="off">
+                                        </div>
+                                    </div>
+                                </ng-template>
+
+
+                            </ngx-datatable-column>
+
+                            <ngx-datatable-column [sortable]="false">
+                                <ng-template ngx-datatable-header-template>
+                                    <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                        <span class="datatable-header-cell-label draggable dark-text">Edit</span>
+                                    </div>
+                                    <div class="row-filter">
+                                    </div>
+                                </ng-template>
+
+                                <ng-template ngx-datatable-cell-template let-row="row">
+                                    <div style="margin-top: -15px" *ngIf="(!row.supplierPartId || !row.itemQty)">
+                                        <button class="button primary" [disabled]="enableAdd" (click)="addKitRow()">Add
+                                        </button>
+                                    </div>
+                                    <div style="cursor:pointer" class="valuePoint "
+                                        *ngIf="(row.supplierPartId || row.itemQty)">
+                                        <i class="icon_pencil link-text text-pt24" 
+                                            *ngIf="!(uniqueId === row.id)"></i>
+                                        <i class="icon_save link-text text-pt24" (click)="saveKitRow(row)"
+                                            *ngIf="(uniqueId === row.id)"
+                                            [ngStyle]="{color : editModel['itemQty'] != 0 ? '' : '#a9a9a9'}"></i>
+                                    </div>
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                            <ngx-datatable-column [sortable]="false">
+                                <ng-template ngx-datatable-header-template>
+                                    <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                        <span class="datatable-header-cell-label draggable dark-text">Remove</span>
+                                    </div>
+
+                                </ng-template>
+
+                                <ng-template ngx-datatable-cell-template let-row="row">
+                                    <div style="cursor:pointer" class="valuePoint "
+                                        *ngIf="(row.supplierPartId || row.itemQty)">
+                                        <i class="icon_close link-text text-pt24 enable-hand"
+                                            (click)="removeKitRow(row)"></i>
+                                    </div>
+                                </ng-template>
+                            </ngx-datatable-column>
+
+                        </ngx-datatable>
+                    </div>
+                </div>
+
+            </mat-card>
+        </div>
+    </mat-card>
+    <br>
+    <div *ngFor="let card of totalKitItems">
+        <mat-card>
+            <h1>{{card.kitName}} | <span> <button mat-raised-button disabled>Draft</button> | <button mat-button
+                        color="warn"  (click)="deleteKit(card.kitId)">Delete</button> <button mat-button color="warn"
+                        style="margin-left: 55rem;" (click)="enableEdit(card)">Edit
+                        Kit</button></span></h1>
+
+
+            <ngx-datatable class="material" [rows]="card.items" [columnMode]="ColumnMode.force" [headerHeight]="50"
+                [footerHeight]="50" [rowHeight]="50" [scrollbarV]="false">
+                <ngx-datatable-column *ngFor="let column of columns; let i=index" [draggable]="false"
+                    [resizeable]="true" [sortable]="false" prop="{{column.key}}">
+                    <ng-template ngx-datatable-header-template>
+                        <div style="z-index: 9999;position: relative">
+                            <span>{{column.name}}</span>
+                        </div>
+                    </ng-template>
+                </ngx-datatable-column>
+            </ngx-datatable>
+
+        </mat-card>
+        <br>
+    </div>
+
+</div>
+
+<!-- new code form file new -->
+
+
+<div fxLayout="column" fxLayoutGap="10px" fxHide.sm="true" fxHide.xs="true" class="full-height page-sub-content">
+    <!--search kits block starts here-->
+    <div class="container">
+        <mat-card fxLayout="row" fxLayoutGap="15px" style="padding: 12px 45px;">
+
+            <div fxFlex="18" fxLayout="row" fxLayoutGap="25px" style="align-items: center" class="arrow-action-area">
+                <a  class="non-decorated-link"><i class="icon_home icon-colors enable-hand"></i></a>
+                <a  class="non-decorated-link"><i
+                        class="icon_arrow_left icon-colors enable-hand"></i></a>
+                <i class="icon_arrow-right icon-colors disabled-grey-color"></i>
+            </div>
+
+
+            <div fxLayout="row" fxFlex="58" style="justify-content: center">
+                <div class=" text-input-container" style="margin: 0px !important;">
+                    <input type="text" name="first-name" title="Search" placeholder="Search" (input)="searchKit()"
+                        [(ngModel)]="searchWord" class="white-background text-input-container "
+                        style="margin-top: 8px;width: 500px;" autocomplete="off" />
+                </div>
+
+
+                <div style="position: relative;margin-left: -30px;margin-top: 20px;">
+                    <i class="icon_search text-pt24 link-text"></i>
+                </div>
+            </div>
+
+            <div fxFlex="20">
+                <button class="button secondary-outline-button md" style="width: 140px" (click)="enableAddKit()">
+                    Add New Kit
+
+                </button>
+            </div>
+        </mat-card>
+    </div>
+    <!--search kits block ends here-->
+
+    <!--Add new kit block starts here-->
+    <div class="container" *ngIf="addKit">
+        <mat-card fxLayout="column" style="padding: 12px 45px;">
+           ->
+            <!--</div>-->
+            <div fxLayout="row  " fxLayoutGap="35px">
+                <div fxFlex="80" fxLayout="column" style="padding-top:20px;padding-bottom:20px">
+                    <p class="text-pt16 bold " style="margin-top:10px">Kit Name</p>
+                    <div fxLayout="row " fxLayoutGap="25px">
+
+                        <div class="text-input-container behalf-box no-margin relative-position">
+                            <input (blur)="validateKitName()" (input)="disablekitNameError()" autocomplete="off"
+                                placeholder="Kit Name" style="margin-bottom: 20px;margin-top: 0px;"
+                                class="white-background" [formControl]="kitName"
+                                [ngClass]="isKitExist ? 'error-text' : ''">
+                            <p *ngIf="isKitExist" class="error-msg text-pt14" style="margin-top:-16px">Already Exists
+                            </p>
+                        </div>
+                        <div class="toggle-container global-green-toggle" style="padding-top: -8%;">
+                            <!--<input type="checkbox" id="toggle1" name="switchgroup1" title="Toggle1" class="toggle">-->
+                            <!--<label for="toggle1"><span>Draft</span></label>-->
+                            <mat-slide-toggle class="text-pt16 bold " (change)="toggle($event)">{{togglevalue == 'Y' ?
+                                'Publish' : 'Draft'}}</mat-slide-toggle>
+                        </div>
+                    </div>
+                    <div fxLayout="column">
+                        <p class="text-pt16 bold " style="margin-top:10px">Kit Description</p>
+                        <div fxLayout="row" class="text-input-container behalf-box no-margin relative-position">
+                            <textarea [formControl]="kitDescription" autocomplete="off" placeholder="Kit Description"
+                                class="white-background" style="margin-bottom: 20px;margin-top: 0px;">
+                                  </textarea>
+                        </div>
+
+                    </div>
+                    <div fxLayout="row">
+                        <i class="icon_plus-circle-outlined icon-colors enable-hand" style="color:#f96302">
+                        </i> <span class="toggle-children enable-hand" style="padding: 4px"
+                            (click)="enableAddItem()">Add Item</span>
+                    </div>
+                </div>
+                <!--<div fxLayout="column"  fxLayoutGap="5px"  >
+              <div fxLayout="column" style="padding:0 2%" >
+                  <div style="padding:0px;" fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="center start">
+                      <img [src]="this.imagecontent" *ngIf="this.previewImage=='true'">
+                      <img src="assets/no-image-available.jpg" *ngIf="this.previewImage=='false'">
+                  </div>
+                  <div fxLayout="row" fxLayoutGap="2px" fxLayoutAlign="center start" style="align-items: center"
+                       (click)="uploadAction()">
+                      <i class="icon_camera text-pt18" style="color: #f96302"></i>
+                      <span class="text-pt14 " style="color: #f96302">Upload Photo</span>
+                  </div>
+              </div>
+          </div>-->
+                <div fxFlex="30" fxLayout="column" fxLayoutGap="5px"
+                    style="align-items: center;padding-left: 20px;padding-top:20px;padding-bottom:20px">
+                    <div fxLayout="row-reverse" fxLayoutGap="20px" style="padding:0 4%">
+                        <button class="button primary sm " style="width:119px;"
+                            [disabled]="isKitExist || noItem || itemExists" (click)="saveNewKit()">
+                            <span class="text-pt14 ">Save</span>
+                        </button>
+                        <button class=" button secondary sm" style="width:119px;" (click)="cancelNewKit()">
+                            <span class="text-pt14 " style="color: #f96302">Cancel</span>
+                        </button>
+                    </div>
+                    <mat-card style="padding:0px; box-shadow: 0 0 0 2px #eee;display:flex;align-items: center"
+                        class="upload-photo">
+                        <img [src]="this.imagecontentAdd" *ngIf="this.previewImageAdd=='true'">
+                        <img src="assets/no-image-available.jpg" *ngIf="this.previewImageAdd=='false'">
+                    </mat-card>
+                    <button class="button md" (click)="uploadActionAdd()">
+                        <div fxLayout="row" fxLayoutGap="2px" style="align-items: center">
+                            <i class="icon_camera text-pt18" style="color: #f96302"></i>
+                            <span class="text-pt14 " style="color: #f96302">Upload Photo</span>
+                        </div>
+                    </button>
+                    <!--<p class="error-img text-pt16" *ngIf="previewImage == 'false'">(Required)</p>-->
+                </div>
+
+
+            </div>
+            <div *ngIf="addItem" class="card-content ngxScrollRemove" style="height:calc(100% - 10px);padding:20px 0">
+                <div class="mat-table-container1" style="height:calc(100% - 10px);width: 80%;">
+                    <ngx-datatable #dataTable class="mat-table" [columnMode]="'force'" [headerHeight]="50" [rows]="rows"
+                        [rowHeight]="'auto'">
+                        <ngx-datatable-column class="mat-table" *ngFor="let column of columns; let i=index"
+                            [draggable]="false" [resizeable]="true" [sortable]="false" prop="{{column.key}}">
+                            <ng-template ngx-datatable-header-template>
+                                <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                    <span
+                                        class="datatable-header-cell-label dark-text draggable ">{{column.name}}</span>
+                                </div>
+                            </ng-template>
+                            <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                <div class="second-row-filter" *ngIf="(!row.supplierPartId || !row.itemQty)">
+                                    <input matInput placeholder="{{column.name}}" class="filter-input"
+                                        oninput="this.value = this.value.toUpperCase()"
+                                        [(ngModel)]="addModel[column.key]" (ngModelChange)="checkFields()"
+                                        (focus)="(column.key != 'supplierPartId') ? getDescription(): ''"
+                                        autocomplete="off"
+                                        [ngClass]="(column.key == 'supplierPartId') && (noItem || itemExists || isItemPublished) ? 'error-text' : ''"
+                                        (input)="noItem || itemExists || isItemPublished ? disableError() : ''">
+                                    <p *ngIf="(column.key == 'supplierPartId') && noItem" class="error-msg text-pt14">
+                                        Item Not Found</p>
+                                    <p *ngIf="(column.key == 'supplierPartId') && itemExists"
+                                        class="error-msg text-pt14">Already Exists</p>
+                                    <p *ngIf="(column.key == 'supplierPartId') && isItemPublished"
+                                        class="error-msg text-pt14">Item Not Published</p>
+                                </div>
+                                <div *ngIf="!addItem || (uniqueId !== row.id)">
+                                    <div style="color:#2B3134" class="valuePoint content-ellipse"
+                                        *ngIf=" (row.supplierPartId || row.itemQty)">
+                                        {{value ? value : 'NA'}}
+                                    </div>
+                                </div>
+                                <div *ngIf="addItem">
+                                    <div style="color:#2B3134" class="valuePoint content-ellipse" *ngIf=" (row.supplierPartId || row.itemQty) &&
+                                       (uniqueId === row.id) && (column.key != 'itemQty')">
+                                        {{value ? value : 'NA'}}
+                                    </div>
+                                    <div class="second-row-filter"
+                                        *ngIf="(uniqueId === row.id) && (column.key == 'itemQty')">
+                                        <input matInput placeholder="Filter " [(ngModel)]="editModel[column.key]"
+                                            class="filter-input" autocomplete="off">
+                                    </div>
+                                </div>
+                            </ng-template>
+
+
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column [sortable]="false">
+                            <ng-template ngx-datatable-header-template>
+                                <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                    <span class="datatable-header-cell-label draggable dark-text">Edit</span>
+                                </div>
+                                <div class="row-filter">
+                                </div>
+                            </ng-template>
+
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <div style="margin-top: -15px" *ngIf="(!row.supplierPartId || !row.itemQty)">
+                                    <button class="button primary" [disabled]="enableAdd" (click)="addKitRow()">Add
+                                    </button>
+                                </div>
+                                <div style="cursor:pointer" class="valuePoint "
+                                    *ngIf="(row.supplierPartId || row.itemQty)">
+                                    <i class="icon_pencil link-text text-pt24" 
+                                        *ngIf="!(uniqueId === row.id)"></i>
+                                    <i class="icon_save link-text text-pt24" (click)="saveKitRow(row)"
+                                        *ngIf="(uniqueId === row.id)"
+                                        [ngStyle]="{color : editModel['itemQty'] != 0 ? '' : '#a9a9a9'}"></i>
+                                </div>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column [sortable]="false">
+                            <ng-template ngx-datatable-header-template>
+                                <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                    <span class="datatable-header-cell-label draggable dark-text">Remove</span>
+                                </div>
+
+                            </ng-template>
+
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <div style="cursor:pointer" class="valuePoint "
+                                    *ngIf="(row.supplierPartId || row.itemQty)">
+                                    <i class="icon_close link-text text-pt24 enable-hand"
+                                        (click)="removeKitRow(row)"></i>
+                                </div>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                    </ngx-datatable>
+                </div>
+            </div>
+           
+        </mat-card>
+    </div>
+    <!--Add new kit block ends here-->
+
+
+    <!--Kit details block[edit/delete] starts here-->
+    <div fxLayout="column" *ngFor="let kits of totalKitItems" class="container">
+        <mat-card fxLayout="column" style="padding: 12px 45px;">
+            <div fxLayout="row" fxLayoutAlign="space-between center" style="padding: 10px 0px;align-items: center">
+                <div fxLayout="row" fxLayoutGap="8px" style="align-items: center">
+                    <div class="text-pt28">
+                        {{kits.kitName}}
+                    </div>
+                    <div style="border-right: 2px solid black;height: 35px;padding-right:5px;"></div>
+                    <div *ngIf="!kits['edit']"
+                        style="padding-left:10px;padding-right:10px;margin-right:8px;padding-top:4px;">
+                        <span class="regular"
+                            [ngClass]="(kits.published == 'Y') ? 'badge success' : 'badge subtle default'"
+                            style="font-size: 14px;padding: 0px 15px;height: 30px;line-height:30px;">{{kits.published ==
+                            'Y' ? 'Published' : 'Draft'}}</span>
+                    </div>
+                   
+                    <div *ngIf="kits['edit']" style="padding-top:5px;padding-right:5px" class="global-green-toggle">
+                      
+                        <mat-slide-toggle style="padding-right: 5px;" [ngModel]="(kits.published == 'Y')? true : false"
+                            (change)="toggleEdit($event, kits)">
+
+                        </mat-slide-toggle>{{kits.published == 'Y' ? 'Published' : 'Draft'}}
+                    </div>
+                    <div style="border-right: 2px solid black;height: 35px;"></div>
+                    <div fxLayout="row" fxLayoutGap="2px" class="action-menu" style="align-items: center"
+                       >
+                        <i class="icon_trash text-pt20 notice-text"></i>
+                        <span class="text-pt16 notice-text " (click)="deleteKit(kits.kitId)" >Delete</span>
+                    </div>
+                </div>
+
+                <div fxLayout="row" (click)="enableEdit(kits)" *ngIf="!kits['edit']" style="padding-right:10px"
+                    class="action-menu">
+                    <i class="icon_pen-pad text-pt20" style="color: #f96302"></i>
+                    <strong class="text-pt16 " style="color: #f96302">Edit Kit</strong>
+                </div>
+                <div fxLayout="row" fxLayoutAlign="end" style="align-items: center;margin-left: auto;"
+                    *ngIf="kits['edit']">
+                    <button class="button secondary sm" style="width: 119px;margin: 10px;" (click)="cancelChanges()">
+                        Cancel
+                    </button>
+                    <button class="button primary sm" [disabled]="kits['edit'] && (noItem || itemExists)"
+                        style="width: 119px;margin: 10px;" (click)="saveChanges(kits)">
+                        Save
+                    </button>
+                </div>
+
+            </div>
+            <!--enable description and image to update starts-->
+            <div fxLayoutAlign="space-between center" fxLayout="row" *ngIf="kits['edit']">
+                <div fxLayout="column" fxLayoutAlign="start start">
+                    <p class="text-pt16 bold " style="margin-top:10px">Kit Description</p>
+                    <!--class="text-input-container behalf-box no-margin relative-position"-->
+                    <div fxLayout="row" class="text-input-container  no-margin " style="width: 430px;">
+                        <textarea type="text" [(ngModel)]="editKitDescription" autocomplete="off"
+                            placeholder="Kit Description"
+                            style="margin-bottom: 20px;margin-top: 0px;font-family:Sans-Serif">
+                                  </textarea>
+                    </div>
+                </div>
+
+                <div fxLayoutAlign="end center" fxLayoutGap="25px">
+                    <div fxLayout="column" style="align-items: center">
+                        <mat-card
+                            style="padding:0px; box-shadow: 0 0 0 2px #eee;display:flex;align-items: center;margin-right:10px;"
+                            class="upload-photo">
+                            <img [src]="this.imagecontent" *ngIf="this.previewImage=='true'">
+                            <img src="assets/no-image-available.jpg" *ngIf="this.previewImage=='false'">
+                        </mat-card>
+                        <button class="button md" (click)="uploadAction()">
+                            <div fxLayout="row" fxLayoutGap="2px" style="align-items: center">
+                                <i class="icon_camera text-pt18" style="color: #f96302"></i>
+                                <span class="text-pt14 " style="color: #f96302">Upload Photo</span>
+                            </div>
+                        </button>
+                        <!--<p class="error-img text-pt16" *ngIf="previewImage == 'false'">(Required)</p>-->
+                    </div>
+
+                </div>
+            </div>
+            <!--enable description and image to update ends-->
+
+            <div class="card-content ngxScrollRemove"
+                style="height:calc(100% - 10px);padding-top:20px;padding-bottom: 20px;">
+                <div class="mat-table-container1" style="height:calc(100% - 10px);width:80%">
+                    <ngx-datatable #dataTable class="mat-table" [columnMode]="'force'" [rowHeight]="'auto'"
+                        [headerHeight]="100" [rows]="kits.items">
+                        <ngx-datatable-column class="mat-table" *ngFor="let column of columns; let i=index"
+                            [draggable]="false" [resizeable]="true" [sortable]="false" prop="{{column.key}}">
+                            <ng-template ngx-datatable-header-template>
+                                <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                    <span
+                                        class="datatable-header-cell-label draggable  dark-text  ">{{column.name}}</span>
+                                </div>
+                            </ng-template>
+                            <ng-template let-value="value" let-row="row" ngx-datatable-cell-template>
+                                <div class="second-row-filter" *ngIf="(!row.supplierPartId || !row.itemQty)">
+                                    <input matInput placeholder="{{column.name}}" class="filter-input"
+                                        oninput="this.value = this.value.toUpperCase()"
+                                        [(ngModel)]="addModel[column.key]" (ngModelChange)="checkFields()"
+                                        (focus)="(column.key != 'supplierPartId') ? getDescription(): ''"
+                                        autocomplete="off"
+                                        [ngClass]="(column.key == 'supplierPartId') && (noItem || itemExists || isItemPublished) ? 'error-text' : ''"
+                                        (input)="noItem || itemExists || isItemPublished ? disableError() : ''">
+                                    <p *ngIf="(column.key == 'supplierPartId') && noItem" class="error-msg text-pt14">
+                                        Item Not Found</p>
+                                    <p *ngIf="(column.key == 'supplierPartId') && itemExists"
+                                        class="error-msg text-pt14">Already Exists</p>
+                                    <p *ngIf="(column.key == 'supplierPartId') && isItemPublished"
+                                        class="error-msg text-pt14">Item Not Published</p>
+                                </div>
+                                <div *ngIf="!kits['edit'] || (uniqueId !== row.id)">
+                                    <div style="color:#2B3134" class="valuePoint content-ellipse"
+                                        *ngIf=" (row.supplierPartId || row.itemQty)">
+                                        {{value ? value : 'NA'}}
+                                    </div>
+                                </div>
+                                <div *ngIf="kits['edit']">
+                                    <div style="color:#2B3134" class="valuePoint content-ellipse" *ngIf=" (row.supplierPartId || row.itemQty) &&
+                                       (uniqueId === row.id) && (column.key != 'itemQty')">
+                                        {{value ? value : 'NA'}}
+                                    </div>
+                                    <div class="second-row-filter"
+                                        *ngIf="(uniqueId === row.id) && (column.key == 'itemQty')">
+                                        <input matInput placeholder="Filter " [(ngModel)]="editModel[column.key]"
+                                            class="filter-input" autocomplete="off">
+                                    </div>
+                                </div>
+
+
+                            </ng-template>
+
+
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column [sortable]="false" *ngIf="kits['edit']">
+                            <ng-template ngx-datatable-header-template>
+                                <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                    <span class="datatable-header-cell-label draggable dark-text">Edit</span>
+                                </div>
+                                <div class="row-filter">
+                                </div>
+                            </ng-template>
+
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <div style="margin-top: -15px" *ngIf="(!row.supplierPartId || !row.itemQty)">
+                                    <button class="button primary" [disabled]="enableEditAdd" (click)="addRow(kits)">Add
+                                    </button>
+                                </div>
+                                <div style="cursor:pointer" class="valuePoint "
+                                    *ngIf="(row.supplierPartId || row.itemQty)">
+                                    <i class="icon_pencil link-text text-pt24" 
+                                        *ngIf="!(uniqueId === row.id)"></i>
+                                    <i class="icon_save link-text text-pt24" (click)="saveRow(row)"
+                                        *ngIf="(uniqueId === row.id)"
+                                        [ngStyle]="{color : editModel['itemQty'] != 0 ? '' : '#a9a9a9'}"></i>
+                                </div>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                        <ngx-datatable-column [sortable]="false" *ngIf="kits['edit']">
+                            <ng-template ngx-datatable-header-template>
+                                <div class="datatable-header-cell-wrapper" style="z-index: 9999;position: relative">
+                                    <span class="datatable-header-cell-label draggable dark-text">Remove</span>
+                                </div>
+
+                            </ng-template>
+
+                            <ng-template ngx-datatable-cell-template let-row="row">
+                                <div style="cursor:pointer" class="valuePoint "
+                                    *ngIf="(row.supplierPartId || row.itemQty)">
+                                    <i class="icon_close link-text text-pt24 enable-hand"
+                                        (click)="updateRemoveItem(row, kits)"></i>
+                                </div>
+                            </ng-template>
+                        </ngx-datatable-column>
+
+                    </ngx-datatable>
+                </div>
+            </div>
+          
+        </mat-card>
+    </div>
+    <!--Kit details block[edit/delete] ends here-->
+
+</div>

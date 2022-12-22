@@ -1,0 +1,161 @@
+<div style="transform: none;
+width: 1248px;
+height: 548px;">
+    <h1 mat-dialog-title class="dailogheader">Edit Campgian</h1>
+    <div mat-dialog-content>
+        <!-- <div fxLayout="row" >
+            <div fxFlex="50" >
+                <h5>STEP 1 <br /> <span class="span-heading">Campaign Details</span></h5>
+            </div>
+            <div fxFlex="50">
+                <h5>STEP 2 <br /> <span class="span-heading">Campaign Questionaire(optional)</span></h5>
+            </div>
+        </div> -->
+
+        <mat-horizontal-stepper [linear]="isLinear" #stepper>
+            <mat-step [stepControl]="firstFormGroup">
+                <form [formGroup]="campiganForm" [formGroup]="secondFormGroup">
+                    <ng-template matStepLabel>Fill out your name</ng-template>
+                    <form fxLayout="column" [formGroup]="campiganForm" novalidate>
+
+                        <h1>Campaign Name</h1>
+                        <div fxLayout="column" class="form-group">
+                            <label for="title">Title</label>
+                            <input type="text" placeholder="Title" id="title" formControlName="title" required />
+
+                        </div>
+                        <div *ngIf="campiganForm.controls['title'].invalid && (campiganForm.controls['title'].dirty || campiganForm.controls['title'].touched)"
+                            class="alert-danger">
+                            <div *ngIf="campiganForm.controls['title'].errors.required">
+                                *This Feild is required
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="form-group">
+                            <label>Campaign Owner</label>
+                            <input type="text" placeholder="Campaign Owner" id="campaignOwner"
+                                formControlName="campaignOwner" />
+                        </div>
+                        <div *ngIf="campiganForm.controls['campaignOwner'].invalid && (campiganForm.controls['campaignOwner'].dirty || campiganForm.controls['campaignOwner'].touched)"
+                            class="alert-danger">
+                            <div *ngIf="campiganForm.controls['campaignOwner'].errors.required">
+                                *This Feild is required
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="form-group">
+                            <label>Created On</label>
+                            <input type="text" placeholder="Date" />
+                        </div>
+                        <label>Campaign Delegates</label>
+                        <mat-form-field class="example-chip-list">
+                            <mat-chip-list #chipList aria-label="Fruit selection">
+                                <mat-chip *ngFor="let fruit of fruits" [selectable]="selectable" [removable]="removable"
+                                    (removed)="remove(fruit)">
+                                    {{fruit}}
+                                    <mat-icon matChipRemove *ngIf="removable">cancel</mat-icon>
+                                </mat-chip>
+                                <input placeholder="Campaign Delegates" #fruitInput [formControl]="fruitCtrl"
+                                    [matAutocomplete]="auto" [matChipInputFor]="chipList"
+                                    [matChipInputSeparatorKeyCodes]="separatorKeysCodes"
+                                    (matChipInputTokenEnd)="add($event)">
+                            </mat-chip-list>
+                            <mat-autocomplete #auto="matAutocomplete" (optionSelected)="selected($event)">
+                                <mat-option *ngFor="let fruit of filteredFruits | async" [value]="fruit">
+                                    {{fruit}}
+                                </mat-option>
+                            </mat-autocomplete>
+                        </mat-form-field>
+                        <h3>Campaign Email</h3>
+
+                        <div fxLayout="column" class="form-group">
+                            <label>From</label>
+                            <input type="text" placeholder="Email" class="formInput" id="from"
+                                formControlName="sender" />
+                        </div>
+                        <div *ngIf="campiganForm.controls['sender'].invalid && (campiganForm.controls['sender'].dirty || campiganForm.controls['sender'].touched)"
+                            class="alert-danger">
+                            <div *ngIf="campiganForm.controls['sender'].errors.required">
+                                *This Feild is required
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="form-group">
+                            <label>Reply To</label>
+                            <input type="text" placeholder="" class="formInput" id="replyTo"
+                                formControlName="reciever" />
+                        </div>
+                        <div *ngIf="campiganForm.controls['reciever'].invalid && (campiganForm.controls['reciever'].dirty || campiganForm.controls['reciever'].touched)"
+                            class="alert-danger">
+                            <div *ngIf="campiganForm.controls['reciever'].errors.required">
+                                *This Feild is required
+                            </div>
+                        </div>
+                        <div fxLayout="column" class="form-group">
+                            <label>Subject</label>
+                            <input type="text" placeholder="Subject" class="formInput" id="subject"
+                                formControlName="subject" />
+                        </div>
+                        <div *ngIf="campiganForm.controls['subject'].invalid && (campiganForm.controls['subject'].dirty || campiganForm.controls['subject'].touched)"
+                            class="alert-danger">
+                            <div *ngIf="campiganForm.controls['subject'].errors.required">
+                                *This Feild is required
+                            </div>
+                        </div>
+                    </form>
+                    <div fxLayoutAlign="end end" style="padding-top: 2rem; padding-right: 2rem;">
+                        <button mat-button color="primary" mat-dialog-close
+                            style="padding-right: 1.5rem;">Close</button>
+                        <button mat-flat-button color="warn" matStepperNext
+                            [disabled]="campiganForm.invalid">Next</button>
+                    </div>
+                </form>
+            </mat-step>
+            <mat-step [stepControl]="secondFormGroup" label="Fill out your address">
+                <form [formGroup]="secondFormGroup" fxLayout="column">
+                    <div style="padding-bottom: 1rem;">
+                        <button mat-flat-button color="accent" (click)="addGroup()" style="width:10%">Add</button>
+                    </div>
+                    <br>
+
+                    <div formArrayName="times"
+                        *ngFor="let time of secondFormGroup.controls.times?.value; let i = index; trackBy:trackByFn">
+                        <div [formGroupName]="i">
+                            <div fxLayout="column" class="form-group">
+                                <label>Question-1</label>
+                                <input placeholder="Please Enter Option" formControlName="from">
+                            </div>
+                            <section class="example-section" formControlName="to">
+
+                                <mat-radio-group [(ngModel)]="labelPosition">
+                                    <mat-radio-button class="example-margin" value="after">Short Answer
+                                    </mat-radio-button>
+                                    <mat-radio-button class="example-margin" value="before">DropDown Select
+                                    </mat-radio-button>
+                                </mat-radio-group>
+                            </section>
+                        </div>
+                        <div class="removeGroup">
+                            <span (click)="removeGroup(i)">Remove this group</span>
+                        </div>
+                    </div>
+                   
+                    <div fxLayoutAlign="end end" style="padding-top: 2rem; padding-right: 2rem;">
+                        <button mat-button matStepperPrevious style="padding-right: 1.5rem;">Back</button>
+                        <button mat-flat-button color="warn" matStepperNext>Submit</button>
+                    </div>
+                </form>
+            </mat-step>
+            <!-- <mat-step>
+              <ng-template matStepLabel>Done</ng-template>
+              <p>You are now done.</p>
+              <div>
+                <button mat-button matStepperPrevious>Back</button>
+                <button mat-button (click)="stepper.reset()">Reset</button>
+              </div>
+            </mat-step> -->
+        </mat-horizontal-stepper>
+
+    </div>
+    <!-- <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+    </div> -->
+
+</div>

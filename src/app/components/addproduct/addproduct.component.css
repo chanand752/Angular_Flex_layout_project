@@ -1,0 +1,56 @@
+.formCard{
+    padding-top: 50px;
+    padding-bottom: 30rem;
+}
+
+select {
+    border-radius: 6px;
+    border-width: 1px;
+    height: 2.5rem;
+    width: 75%;
+}
+
+/* .check-box {
+    padding: 5px;
+    margin: 5px;
+} */
+
+input {
+    border-radius: 6px;
+    border-width: 0.5px;
+    height: 2rem;
+    width: 50%;
+    
+}
+
+textarea {
+    width: 50%;
+}
+
+label {
+    padding-top: 1rem;
+}
+
+.button {
+    width: 70%;
+    color: #e9f00c;
+    background-color: rgb(171, 170, 170);
+    height: 2.5rem;
+    padding: 1.5rem;
+    border: none;
+    border-radius: 3px;
+    font-size: 20px;
+    text-align: center;
+}
+
+.example-margin {
+    margin: 10px;
+}
+
+.heading-h3 {
+    padding-top: 10px;
+}
+
+.main-heading {
+    padding-top: 2rem;
+}

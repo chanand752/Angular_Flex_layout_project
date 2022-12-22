@@ -1,0 +1,78 @@
+[
+    {
+    "kitId": 71,
+    "kitName": "new hire",
+    "published": "N",
+    "kitDescription": "testing",
+    "kitImg": "NA",
+    "createDate": "2022-04-08T18:20:01.000Z",
+    "modifiedDate": "2022-04-08T18:20:01.000Z",
+    "items": []
+    },
+    {
+    "kitId": 65,
+    "kitName": "My Kit",
+    "published": "N",
+    "kitDescription": "NA",
+    "kitImg": "https://storage.googleapis.com/wb-cm-images-dev/My Kit.png",
+    "createDate": "2021-05-25T04:42:15.000Z",
+    "modifiedDate": "2022-03-18T19:42:44.000Z",
+    "items": [
+    {
+    "supplierPartId": "GETKITMAN",
+    "itemQty": 2,
+    "id": 46,
+    "itemDescription": "KJK"
+    },
+    {
+    "supplierPartId": "HDMM6",
+    "itemQty": 5,
+    "id": 64,
+    "itemDescription": "HDMI to HDMI 6ft cable"
+    }
+    ]
+    },
+    {
+    "kitId": 59,
+    "kitName": "WORKFROM HOME KIT",
+    "published": "N",
+    "kitDescription": "Work from home kit with monitor, cable, compute device",
+    "kitImg": "NA",
+    "createDate": "2021-04-05T14:01:25.000Z",
+    "modifiedDate": "2022-03-18T19:42:25.000Z",
+    "items": [
+    {
+    "supplierPartId": "wb-210-awli",
+    "itemQty": 1,
+    "id": 8,
+    "itemDescription": "Dell Standard 5410 Corporate Laptop"
+    },
+    {
+    "supplierPartId": "hdmm6",
+    "itemQty": 1,
+    "id": 9,
+    "itemDescription": "HDMI to HDMI 6ft cable"
+    }
+    ]
+    },
+    {
+    "kitId": 69,
+    "kitName": "kit 2",
+    "published": "Y",
+    "kitDescription": "testing2",
+    "kitImg": "NA",
+    "createDate": "2021-12-30T17:11:08.000Z",
+    "modifiedDate": "2022-01-04T14:36:29.000Z",
+    "items": [
+    {
+    "supplierPartId": "HDMM6",
+    "itemQty": 1,
+    "id": 63,
+    "itemDescription": "HDMI to HDMI 6ft cable"
+    }
+    ]
+    }
+]
+
+
+

@@ -1,0 +1,88 @@
+
+<div *ngIf="tab2">
+    <button  type="button" (click)="Edit()">Edit</button>
+<div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div>
+    <h1 mat-dialog-title>Form Data </h1>
+    <div mat-dialog-content>{{data.campagain}}</div>
+    <div mat-dialog-content>{{data.name}}</div>
+    <div mat-dialog-content>{{data.Address}}</div>
+    <div mat-dialog-content>{{data.Apt_Suite}}</div>
+    <div mat-dialog-content>{{data.city}}</div>
+    <div mat-dialog-content>{{data.state}}</div>
+    <div mat-dialog-content>{{data.zipcode}}</div>
+    <div mat-dialog-content>{{data.country}}</div>
+    <div mat-dialog-content>{{data.phoneNumber}}</div>
+    <div mat-dialog-content>{{nameValue}}</div>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Close</button>
+    </div>
+    <div mat-dialog-actions>
+        <button mat-button mat-dialog-close>Submit</button>
+    </div>
+ 
+</div>
+
+<div *ngIf="tab1">
+    <div fxLayout="column">
+        <mat-form class="formCard" fxLayout="column" style="padding: 2rem;">
+            <div fxLayout="column">
+                <select placeholder="Select your component" value="{{data.campagain}}">
+                    <option value="" disabled selected hidden>Select Campagain</option>
+                    <option value="coffee">Coffee</option>
+                    <option value="tea">Tea</option>
+                    <option value="milk">Milk</option>
+                </select>
+            </div>
+            <div fxLayout="column" style="padding: 5px;">
+                <section class="example-section" fxLayout="column">
+                    <mat-checkbox class="example-margin">Ship to my Office(9090)</mat-checkbox>
+                    <mat-checkbox class="example-margin">Ship to my home</mat-checkbox>
+                </section>
+            </div>
+            <label>Full Name</label>
+            <input type="text" placeholder="Full Name"  value="{{data.name}}"/>
+            <label>Address (Cannot delevier to PO box Address) </label>
+            <input type="text" placeholder="Street Address" value="{{data.Address}}" />
+            <label>Apt/Suite# </label>
+            <input type="text" placeholder="Apt/Suite" value="{{data.Apt_Suite}}" />
+            <div fxLayoutAlign="space-between" fxLayout="row" fxLayout.xs="column">
+                <div fxLayout="column" fxFlex="30">
+                    <label>Street</label>
+                    <input type="text" placeholder="City" value="{{data.city}}" />
+                </div>
+                <div fxLayout="column" fxFlex="30">
+                    <label>State/Province</label>
+                    <input type="text" placeholder="State" value="{{data.state}}"/>
+                </div>
+                <div fxLayout="column" fxFlex="30">
+                    <label>Zip/Postal Code</label>
+                    <input type="text" placeholder="Zip Code" value="{{data.zipcode}}" />
+                </div>
+            </div>
+            <div fxLayout="row">
+                <div fxLayout="column" fxFlex="100">
+                    <label>Country</label>
+                    <select placeholder="Select your component" value="{{data.country}}">
+                        <option value="" disabled selected hidden>Select Country</option>
+                        <option value="India">India</option>
+                        <option value="U.S.A">USA</option>
+                        <option value="Novi">Novi</option>
+                    </select>
+                </div>
+                <div fxLayout="column" fxFlex="35">
+                    <label>Phone Number</label>
+                    <input type="text" placeholder="Phone Number" value="{{data.phoneNumber}}"/>
+                </div>
+            </div>
+            <div style="padding: 1.5rem;" fxLayoutAlign="center center">
+                <button type="submit" class="button" fxLayoutAlign="center center"
+                    (click)="submitForm()">Submit</button><br>
+            </div>
+        </mat-form>
+    
+    </div>
+
+</div>
+
+
+

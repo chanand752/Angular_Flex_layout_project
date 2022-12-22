@@ -1,0 +1,155 @@
+<div fxLayout="column">
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between">
+        <mat-card fxFlex="60" *ngIf="OrderShipped">
+            <mat-card-header>
+                <h1>Order Details</h1>
+            </mat-card-header>
+            <div class="wrapper" >
+                <ol class="StepProgress">
+                    <li class="StepProgress-item">
+                        <strong>Workbench Order Submitted </strong>
+                        Order #PR32715 <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item">
+                        <strong>Purchase Request Submitted</strong>
+                        View #PR32715 in Ariba <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item">
+                        <strong>Purchase Request Approved</strong>
+                        View #PR32715 in Ariba <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item">
+                        <strong>Order Shipped</strong>
+                        2021/07/16<br />
+                        #PR32715
+                    </li>
+                </ol>
+            </div>
+        </mat-card>
+
+        <!-- OrderSubmitted -->
+
+        <mat-card fxFlex="60" *ngIf="OrderSubmitted">
+            <mat-card-header>
+                <h1>Order Details</h1>
+            </mat-card-header>
+            <div class="wrapper">
+                <ol class="StepProgress-1">
+                    <li class="StepProgress-item-1">
+                        <strong>Workbench Order Submitted </strong> <br />
+                        Order #PR32715 <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item-1">
+                        <strong>Purchase Request Submitted</strong> <br />
+                        View #PR32715 in Ariba <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item-1">
+                        <strong>Purchase Request Approved</strong> <br />
+                        View #PR32715 in Ariba <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item-1">
+                        <strong>Order Shipped</strong> <br />
+                        2021/07/16<br />
+                        #PR32715
+                    </li>
+                </ol>
+            </div>
+        </mat-card>
+
+        <!-- RequestSubmitted -->
+
+        <mat-card fxFlex="60" *ngIf="RequestSubmitted">
+            <mat-card-header>
+                <h1>Order Details</h1>
+            </mat-card-header>
+            <div class="wrapper">
+                <ol class="StepProgress-1">
+                    <li class="StepProgress-item">
+                        <strong>Workbench Order Submitted </strong> <br />
+                        Order #PR32715 <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item">
+                        <strong>Purchase Request Submitted</strong> <br />
+                        View #PR32715 in Ariba <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item-1">
+                        <strong>Purchase Request Approved</strong> <br />
+                        View #PR32715 in Ariba <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item-1">
+                        <strong>Order Shipped</strong> <br />
+                        2021/07/16<br />
+                        #PR32715
+                    </li>
+                </ol>
+            </div>
+        </mat-card>
+
+        <!-- RequestApproved -->
+
+        <mat-card fxFlex="60" *ngIf="RequestApproved">
+            <mat-card-header>
+                <h1>Order Details</h1>
+            </mat-card-header>
+            <div class="wrapper">
+                <ol class="StepProgress-1">
+                    <li class="StepProgress-item">
+                        <strong>Workbench Order Submitted </strong> <br />
+                        Order #PR32715 <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item">
+                        <strong>Purchase Request Submitted</strong> <br />
+                        View #PR32715 in Ariba <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item">
+                        <strong>Purchase Request Approved</strong> <br />
+                        View #PR32715 in Ariba <br />
+                        2021/07/16
+                    </li>
+                    <li class="StepProgress-item-1">
+                        <strong>Order Shipped</strong> <br />
+                        2021/07/16<br />
+                        #PR32715
+                    </li>
+                </ol>
+            </div>
+        </mat-card>
+
+        <mat-card class="example-card">
+
+            <mat-card-content>
+                <h2>Workbench Order for DREW ENGEL</h2>
+                <p>#PR32715</p>
+                <p>Apple MacBook Pro 16 <span style="margin-left: 3rem;">Qty-1</span></p>
+            </mat-card-content>
+        </mat-card>
+
+
+    </div>
+</div>
+
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<br/>
+<div fxLayout="row">
+
+    <button mat-raised-button color="accent" (click)="orderSubmitted()">Basic</button>
+    <button mat-raised-button color="primary" (click)="requestSubmitted()">Primary</button>
+    <button mat-raised-button color="accent" (click)="requestApproved()">Accent</button>
+    <button mat-raised-button color="warn" (click)="orderShipped()">Warn</button>
+</div>

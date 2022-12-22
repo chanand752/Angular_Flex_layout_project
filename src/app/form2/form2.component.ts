@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { MediaChange, MediaObserver } from '@angular/flex-layout';
 import { FormBuilder, FormControl, FormGroup } from '@angular/forms';
 import { GetServiceService } from '../get-service.service';
 import { Router } from '@angular/router';

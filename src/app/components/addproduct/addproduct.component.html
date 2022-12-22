@@ -1,0 +1,272 @@
+<h1>Add Product</h1>
+<button mat-flat-button color="warn" (click)=" addProduct()">Add-Product</button>
+<div fxLayout="column">
+
+    <!-- <mat-form class="formCard" fxLayout="column" style="padding: 2rem;" [formGroup]="profileForm">
+
+        <div fxLayout="column" style="padding: 5px;">
+            <section class="example-section" fxLayout="column">
+                <mat-checkbox class="example-margin"></mat-checkbox>
+                <mat-checkbox class="example-margin">Ship to my home</mat-checkbox>
+            </section>
+        </div>
+        <label>Full Name</label>
+        <input type="text" placeholder="Full Name" formControlName="name" />
+        <label>Address (Cannot delevier to PO box Address) </label>
+        <input type="text" placeholder="Street Address" formControlName="Address" />
+        <label>Apt/Suite# </label>
+        <input type="text" placeholder="Apt/Suite" formControlName="Apt_Suite" />
+        <div fxLayoutAlign="space-between" fxLayout="row" fxLayout.xs="column">
+            <div fxLayout="column" fxFlex="30">
+                <label>Street</label>
+                <input type="text" placeholder="City" formControlName="city" />
+            </div>
+            <div fxLayout="column" fxFlex="30">
+                <label>State/Province</label>
+                <input type="text" placeholder="State" formControlName="state" />
+            </div>
+            <div fxLayout="column" fxFlex="30">
+                <label>Zip/Postal Code</label>
+                <input type="text" placeholder="Zip Code" formControlName="zipcode" />
+            </div>
+        </div>
+        <div fxLayout="row">
+            <div fxLayout="column" fxFlex="100">
+                <label>Country</label>
+                <select placeholder="Select your component" formControlName="country">
+                    <option value="" disabled selected hidden>Select Country</option>
+                    <option value="India">India</option>
+                    <option value="U.S.A">USA</option>
+                    <option value="Novi">Novi</option>
+                </select>
+            </div>
+            <div fxLayout="column" fxFlex="35">
+                <label>Phone Number</label>
+                <input type="text" placeholder="Phone Number" formControlName="phoneNumber" />
+            </div>
+        </div>
+        <div style="padding: 1.5rem;" fxLayoutAlign="center center">
+            <button type="submit" class="button" fxLayoutAlign="center center"
+                (click)="submitForm()">Submit</button><br>
+        </div>
+    </mat-form> -->
+</div>
+
+
+<div *ngIf="AddProductForm">
+    <mat-form class="formCard" fxLayout="column" style="padding: 2rem;" [formGroup]="profileForm">
+        <h3>Product Name</h3>
+        <div fxLayout="row" fxLayout.xs="column" fxFlex="50">
+            <div fxLayout="column" fxFlex="30">
+                <label>Supplier Part Number <span style="color: #f44336;">(Requried)</span></label>
+                <input type="text" placeholder="Supplier Part Number" formControlName="supllierNumber"  />
+            </div>
+            <div fxLayout="column" fxFlex="30">
+                <label>Title (Short Name up to 50 Chars)</label>
+                <input type="text" placeholder="" formControlName="title" />
+            </div>
+        </div>
+  
+        <h3 class="main-heading">Product Information</h3>
+        <div fxLayout="row" fxLayout.xs="column" fxFlex="50">
+            <div fxLayout="column" fxFlex="50">
+
+                <label>Manufacturer</label>
+                <input type="text" placeholder="" formControlName="manfacturer" />
+                <label>SPSC Code</label>
+                <input type="text" placeholder="UNSPSC" formControlName="spscCode" />
+                <label>UnitPrice</label>
+                <input type="text" placeholder="" formControlName="unitPrice" />
+            </div>
+
+            <div fxLayout="column" fxFlex="50">
+                <label>Man.Part #/SAP Article No.</label>
+                <input type="text" placeholder="" formControlName="partNumber" />
+                <label>ClassicFication Code</label>
+                <input type="text" placeholder="" formControlName="clasificationCode" />
+                <label>Lead Time</label>
+                <input type="text" placeholder="" formControlName="LeadTime" />
+            </div>
+
+        </div>
+        <div fxLayout="column" fxFlex="50">
+            <label>Product Description:</label>
+            <textarea rows="4" cols="50" formControlName="profileDecription"></textarea>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs="column" fxFlex="50" style="padding: 1rem;border:1px sold rgb(207, 202, 202);">
+            <div fxLayout="column" fxFlex="50">
+                <select placeholder="Select your component">
+                    <option value="" disabled selected hidden>Select A Device type</option>
+                    <option value="India">India</option>
+                    <option value="U.S.A">USA</option>
+                    <option value="Novi">Novi</option>
+                </select>
+            </div>
+            <div fxLayout="column" fxFlex="50">
+                <select placeholder="Select your component">
+                    <option value="" disabled selected hidden>Select an OS Type</option>
+                    <option value="India">India</option>
+                    <option value="U.S.A">USA</option>
+                    <option value="Novi">Novi</option>
+                </select>
+            </div>
+        </div>
+
+        <div fxLayout="column" fxFlex="50">
+
+            <div fxLayout="row">
+                <h3 class="heading-h3">Catlog type</h3>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US Crop</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US Crop DC</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US Store</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US MST</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US AB</mat-checkbox>
+            </div>
+            <div fxLayout="row" style="padding-left: 4.5rem;">
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA Crop</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA Crop DC</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA Store</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA MST</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA AR</mat-checkbox>
+            </div>
+        </div>
+        <div fxLayout="column" fxFlex="50">
+
+            <div fxLayout="row">
+                <h3 class="heading-h3">Catlog <span style="color: #f44336;">(Requried)</span></h3>
+                <mat-checkbox class="example-margin" formControlName="catlog">Workbench</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlog">Ariba</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlog">Feild Caption</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlog">Emergency Requirement</mat-checkbox>
+
+            </div>
+        </div>
+        <div style="padding: 1.5rem;" fxLayoutAlign="center center">
+            <button type="submit" class="button" fxLayoutAlign="center center"
+                (click)="submitForm()">Submit</button><br>
+        </div>
+
+    </mat-form>
+</div>
+
+<div *ngIf="MatDailogue" fxLayout="column">
+    <!-- <div mat-dialog-content>This dialog showcases the title, close, content and actions elements.</div> -->
+    <h1 mat-dialog-title>Product Data</h1>
+    <div *ngFor="let data of matArry">
+        <div mat-dialog-content>{{data.supllierNumber}}</div>
+        <div mat-dialog-content>{{data.title}}</div>
+        <div mat-dialog-content>{{data.manfacturer}}</div>
+        <div mat-dialog-content>{{data.partNumber}}</div>
+        <div mat-dialog-content>{{data.spscCode}}</div>
+        <div mat-dialog-content>{{data.clasificationCode}}</div>
+        <div mat-dialog-content>{{data.unitPrice}}</div>
+        <div mat-dialog-content>{{data.LeadTime}}</div>
+        <div mat-dialog-content>{{data.profileDecription}}</div>
+        <div mat-dialog-content>{{data.catlogType}}</div>
+    </div>
+    <div fxLayout="row" fxLayout.xs="column" fxFlex="50">
+                <button  mat-flat-button color="primary" (click)="closeForm()">Close</button>
+        
+                <button mat-flat-button color="warn" (click) ="editProductData()">Edit</button>
+    </div>
+
+</div>
+
+
+<!-- <div *ngIf="EditProductData">
+    <mat-form class="formCard" fxLayout="column" style="padding: 2rem;" [formGroup]="profileForm">
+        <h3>Product Name</h3>
+        <div fxLayout="row" fxLayout.xs="column" fxFlex="50">
+            <div fxLayout="column" fxFlex="30">
+                <label>Supplier Part Number</label>
+                <input type="text" placeholder="Supplier Part Number" formControlName="supllierNumber" {{data.supllierNumber}} />
+            </div>
+            <div fxLayout="column" fxFlex="30">
+                <label>Title (Short Name up to 50 Chars)</label>
+                <input type="text" placeholder="" formControlName="title"  {{data.title}}/>
+            </div>
+        </div>
+
+        <h3 class="main-heading">Product Information</h3>
+        <div fxLayout="row" fxLayout.xs="column" fxFlex="50">
+            <div fxLayout="column" fxFlex="50">
+
+                <label>Manufacturer</label>
+                <input type="text" placeholder="" formControlName="manfacturer" {{data.manfacturer}}/>
+                <label>SPSC Code</label>
+                <input type="text" placeholder="UNSPSC" formControlName="spscCode" />
+                <label>UnitPrice</label>
+                <input type="text" placeholder="" formControlName="unitPrice" />
+            </div>
+
+            <div fxLayout="column" fxFlex="50">
+                <label>Man.Part #/SAP Article No.</label>
+                <input type="text" placeholder="" formControlName="partNumber" />
+                <label>ClassicFication Code</label>
+                <input type="text" placeholder="" formControlName="clasificationCode" />
+                <label>Lead Time</label>
+                <input type="text" placeholder="" formControlName="LeadTime"  />
+            </div>
+
+        </div>
+        <div fxLayout="column" fxFlex="50">
+            <label>Product Description:</label>
+            <textarea rows="4" cols="50" formControlName="profileDecription"></textarea>
+        </div>
+
+        <div fxLayout="row" fxLayout.xs="column" fxFlex="50" style="padding: 1rem;border:1px sold rgb(207, 202, 202);">
+            <div fxLayout="column" fxFlex="50">
+                <select placeholder="Select your component">
+                    <option value="" disabled selected hidden>Select A Device type</option>
+                    <option value="India">India</option>
+                    <option value="U.S.A">USA</option>
+                    <option value="Novi">Novi</option>
+                </select>
+            </div>
+            <div fxLayout="column" fxFlex="50">
+                <select placeholder="Select your component">
+                    <option value="" disabled selected hidden>Select an OS Type</option>
+                    <option value="India">India</option>
+                    <option value="U.S.A">USA</option>
+                    <option value="Novi">Novi</option>
+                </select>
+            </div>
+        </div>
+
+        <div fxLayout="column" fxFlex="50">
+
+            <div fxLayout="row">
+                <h3 class="heading-h3">Catlog type</h3>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US Crop</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US Crop DC</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US Store</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US MST</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">US AB</mat-checkbox>
+            </div>
+            <div fxLayout="row" style="padding-left: 4.5rem;">
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA Crop</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA Crop DC</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA Store</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA MST</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlogType">CA AR</mat-checkbox>
+            </div>
+        </div>
+        <div fxLayout="column" fxFlex="50">
+
+            <div fxLayout="row">
+                <h3 class="heading-h3">Catlog (Requird)</h3>
+                <mat-checkbox class="example-margin" formControlName="catlog">Workbench</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlog">Ariba</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlog">Feild Caption</mat-checkbox>
+                <mat-checkbox class="example-margin" formControlName="catlog">Emergency Requirement</mat-checkbox>
+
+            </div>
+        </div>
+        <div style="padding: 1.5rem;" fxLayoutAlign="center center">
+            <button type="submit" class="button" fxLayoutAlign="center center"
+                (click)="submitForm()">Submit</button><br>
+        </div>
+
+    </mat-form>
+</div> -->
